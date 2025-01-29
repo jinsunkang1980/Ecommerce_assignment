@@ -19,12 +19,11 @@ $result = $stmt->get_result();
 ?>
 
 <style>
-    /* Center everything */
     .order-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 80vh; /* Keeps it centered in the viewport */
+        height: 80vh; 
     }
 
     .order-box {
@@ -41,7 +40,7 @@ $result = $stmt->get_result();
     .order-box h1 {
         margin-bottom: 15px;
         font-size: 1.8em;
-        color: #28a745; /* Green Success Color */
+        color: #28a745; 
     }
 
     .order-box p {
