@@ -3,7 +3,6 @@
 </footer>
 
 <style>
-    /* Make sure the body takes the full height */
     html, body {
         height: 100%;
         margin: 0;
@@ -12,12 +11,10 @@
         flex-direction: column;
     }
 
-    /* Push content to take available space */
     .content {
         flex: 1;
     }
 
-    /* Fixed Footer at the Bottom */
     footer {
         text-align: center;
         padding: 15px;
