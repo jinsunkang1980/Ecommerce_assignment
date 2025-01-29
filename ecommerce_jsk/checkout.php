@@ -76,11 +76,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Display the checkout form
-echo "<h1>Checkout</h1>";
-echo "<form method='POST' action='checkout.php'>";
-echo "<p>Click the button below to confirm your order.</p>";
-echo "<button type='submit'>Confirm Order</button>";
-echo "</form>";
+echo "<style>
+    /* Center the checkout box */
+    .checkout-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+    }
+
+    .checkout-box {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 400px;
+        max-width: 90%;
+        border: 1px solid #ddd;
+    }
+
+    .checkout-box h1 {
+        margin-bottom: 15px;
+        font-size: 1.8em;
+        color: #007bff; /* Blue color */
+    }
+
+    .checkout-box p {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .checkout-button {
+        display: inline-block;
+        padding: 12px 20px;
+        background-color: black;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        transition: background 0.3s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .checkout-button:hover {
+        background-color: #333;
+    }
+</style>";
+
+echo "<div class='checkout-container'>
+        <div class='checkout-box'>
+            <h1>Checkout</h1>
+            <form method='POST' action='checkout.php'>
+                <p>Click the button below to confirm your order.</p>
+                <button type='submit' class='checkout-button'>Confirm Order</button>
+            </form>
+        </div>
+      </div>";
+
 
 include 'includes/footer.php';
 ?>
