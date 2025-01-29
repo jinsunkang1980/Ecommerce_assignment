@@ -1,8 +1,8 @@
 
 .cart-title {
     text-align: center;
-    font-size: 2em; /* Optional: Adjusts the font size */
-    margin-top: 20px; /* Adds space above */
+    font-size: 2em; 
+    margin-top: 20px; 
 }
 
 .cart-item {
@@ -13,11 +13,11 @@
 }
 
 .cart-item img {
-    width: 100px;  /* Adjust width as needed */
-    height: auto;  /* Keeps the aspect ratio */
+    width: 100px;  
+    height: auto;  
     display: block;
-    margin-bottom: 10px; /* Adds space below the image */
-    border-radius: 5px; /* Optional: Adds rounded corners */
+    margin-bottom: 10px; 
+    border-radius: 5px; 
 }
 
 .cart-item h3, .cart-item p {
