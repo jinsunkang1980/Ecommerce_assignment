@@ -1,4 +1,10 @@
 
+.cart-title {
+    text-align: center;
+    font-size: 2em; /* Optional: Adjusts the font size */
+    margin-top: 20px; /* Adds space above */
+}
+
 .cart-item {
     display: flex;
     align-items: center;
@@ -7,8 +13,11 @@
 }
 
 .cart-item img {
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    width: 100px;  /* Adjust width as needed */
+    height: auto;  /* Keeps the aspect ratio */
+    display: block;
+    margin-bottom: 10px; /* Adds space below the image */
+    border-radius: 5px; /* Optional: Adds rounded corners */
 }
 
 .cart-item h3, .cart-item p {
@@ -18,14 +27,14 @@
 .button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #000501;
     color: white;
     text-decoration: none;
     border-radius: 5px;
 }
 
 .button:hover {
-    background-color: #218838;
+    background-color: #000501;
 }
 
 nav {
@@ -38,7 +47,7 @@ nav {
 nav a {
     margin: 0 10px;
     text-decoration: none;
-    color: #333;
+    color: #000000;
 }
 .nav-right {
     margin-left: auto;
@@ -46,7 +55,7 @@ nav a {
     align-items: center;
 }
 .username {
-    margin-right: 10px;
+    margin-right: 0px;
     font-weight: bold;
-    color: #555;
+    color: #000000;
 }
