@@ -6,17 +6,17 @@ include 'includes/db.php';
 <style>
     .products-container {
         display: grid;
-        grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
-        gap: 20px; /* Space between products */
+        grid-template-columns: repeat(5, 1fr); 
+        gap: 20px; 
         margin: 20px auto;
-        max-width: 1200px; /* Ensure container is centered and not too wide */
+        max-width: 1200px; 
     }
 
     .products-heading {
         text-align: center;
         font-size: 2em;
         font-weight: bold;
-        margin: 20px 0;
+        margin: 10px 0;
     }
 
     .product {
@@ -32,9 +32,9 @@ include 'includes/db.php';
     }
 
     .product img {
-        width: 100%; /* Ensure full width of the container */
-        aspect-ratio: 5 / 8; /* Maintain 5x8 ratio */
-        object-fit: cover; /* Cover the container while keeping the ratio */
+        width: 100%; 
+        aspect-ratio: 5 / 8; 
+        object-fit: cover; 
         border-radius: 5px;
     }
 
@@ -46,11 +46,11 @@ include 'includes/db.php';
     .product p.description {
         margin: 10px 0;
         font-size: 1em;
-        min-height: 60px; /* Ensures consistent height for descriptions */
+        min-height: 60px; 
     }
 
     .product-footer {
-        margin-top: auto; /* Pushes footer to the bottom */
+        margin-top: auto; 
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -67,7 +67,7 @@ include 'includes/db.php';
         width: 150px;
         height: 40px;
         line-height: 40px;
-        background-color: #007bff;
+        background-color:rgb(0, 2, 3);
         color: white;
         text-decoration: none;
         border-radius: 5px;
