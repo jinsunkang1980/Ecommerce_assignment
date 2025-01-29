@@ -62,7 +62,7 @@ if (!empty($error_message)) {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #007bff;
+            background-color:rgb(3, 5, 0);
             color: white;
             padding: 10px 20px;
             position: fixed;
@@ -112,7 +112,7 @@ if (!empty($error_message)) {
         <label for="remember_me"> Remember Me</label>
     </div>
     
-    <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Log In</button>
+    <button type="submit" style="width: 100%; padding: 10px; background-color:rgb(7, 7, 0); color: white; border: none; border-radius: 5px; cursor: pointer;">Log In</button>
     <p style="text-align: center; margin-top: 10px;"><a href="#">Lost your password?</a></p>
 </form>
 
