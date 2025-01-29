@@ -2,21 +2,43 @@
 include 'includes/db.php'; // Database connection
 include 'includes/header.php'; // Include the header
 
+$error_message = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = trim($_POST['name']);
-    $email = trim($_POST['email']);
+    // Sanitize and validate user inputs
+    $name = htmlspecialchars(trim($_POST['name']));
+    $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
     $password = trim($_POST['password']);
-    $hash_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert the user into the database
-    $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $hash_password);
-
-    if ($stmt->execute()) {
-        header('Location: login.php'); // Redirect to login page
-        exit;
+    if (!$email) {
+        $error_message = "Invalid email format.";
     } else {
-        $error_message = "Error: " . $stmt->error;
+        // Check if the email is already registered
+        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            $error_message = "This email is already registered. Please log in.";
+        } else {
+            // Hash the password before storing
+            $hash_password = password_hash($password, PASSWORD_DEFAULT);
+
+            // Insert the user into the database
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $name, $email, $hash_password);
+
+            if ($stmt->execute()) {
+                // Redirect to the login page
+                header('Location: login.php');
+                exit;
+            } else {
+                $error_message = "Error registering user: " . $stmt->error;
+            }
+        }
+        $stmt->close();
     }
 }
 
@@ -47,13 +69,13 @@ if (!empty($error_message)) {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #007bff;
+            background-color: #000;
             color: white;
             padding: 10px 20px;
             position: fixed;
             top: 0;
             left: 0;
-            width: 98%;
+            width: 100%;
             z-index: 1000;
         }
 
@@ -73,7 +95,7 @@ if (!empty($error_message)) {
             justify-content: center;
             align-items: center;
             height: 100%;
-            padding-top: 60px; /* Accounts for the navbar height */
+            padding-top: 60px; 
         }
 
         .register-box {
@@ -84,11 +106,6 @@ if (!empty($error_message)) {
             background: white;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-        }
-
-        .register-box img {
-            max-width: 80px;
-            margin-bottom: 20px;
         }
 
         .register-box label {
@@ -109,7 +126,7 @@ if (!empty($error_message)) {
         .register-box button {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color: #000;
             color: white;
             border: none;
             border-radius: 5px;
@@ -117,7 +134,7 @@ if (!empty($error_message)) {
         }
 
         .register-box button:hover {
-            background-color: #0056b3;
+            background-color: #222;
         }
 
         .register-box p {
@@ -125,7 +142,7 @@ if (!empty($error_message)) {
         }
 
         .register-box a {
-            color: #007bff;
+            color: #000;
             text-decoration: none;
         }
 
@@ -151,7 +168,7 @@ if (!empty($error_message)) {
     <!-- Register Container -->
     <div class="register-container">
         <div class="register-box">
-            
+            <h2>Register</h2>
             <form method="POST" action="">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your full name" required>
